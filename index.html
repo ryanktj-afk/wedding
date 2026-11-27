@@ -123,8 +123,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--sage); outline-
 .closing .poem-src { font-size: 13px; color: var(--muted); margin: 0; }
 
 /* 일정 추가 */
-.cal-btns { display: flex; justify-content: center; gap: 8px; margin-top: 22px; flex-wrap: wrap; }
-.cal-btns a, .cal-btns button { padding: 9px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--sheet); color: var(--ink); font-size: 13px; text-decoration: none; }
 /* 약도 */
 .map-svg { display: block; width: 100%; height: auto; background: #f3f1ea; border-radius: 6px; margin-bottom: 12px; }
 .map-links.three { grid-template-columns: repeat(3, 1fr); }
@@ -211,7 +209,6 @@ footer { padding: 40px 0 56px; text-align: center; font-family: var(--latin); fo
     </div>
     <div class="count" id="count" aria-live="polite"></div>
     <p class="dday" id="dday"></p>
-    <div class="cal-btns"><a id="gcalBtn" target="_blank" rel="noopener">구글 캘린더에 추가</a><a id="icsBtn" download="taekjin-seolhee-wedding.ics">휴대폰 캘린더에 추가</a></div>
   </section>
 
   <!-- 4. 갤러리 -->
@@ -463,13 +460,6 @@ $("#kakaoBtn").onclick = () => {
 /* 주소 복사 */
 $("#addrCopy").onclick = () => copy(ADDRESS, "주소를 복사했어요");
 
-/* 캘린더 */
-(function () {
-  const t = "김택진 ♥ 백설희 결혼식", loc = "양재 엘타워 6층 그레이스홀 (" + ADDRESS + ")";
-  $("#gcalBtn").href = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent(t) + "&dates=20270306T060000Z/20270306T080000Z&location=" + encodeURIComponent(loc) + "&details=" + encodeURIComponent(SITE_URL);
-  const ics = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//taekjin-seolhee//wedding//KO","BEGIN:VEVENT","UID:20270306-taekjin-seolhee@wedding","DTSTAMP:20261126T000000Z","DTSTART:20270306T060000Z","DTEND:20270306T080000Z","SUMMARY:" + t,"LOCATION:" + loc,"DESCRIPTION:" + SITE_URL,"BEGIN:VALARM","TRIGGER:-P1D","ACTION:DISPLAY","DESCRIPTION:내일은 택진·설희 결혼식","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
-  $("#icsBtn").href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" }));
-})();
 
 /* 배경음악 */
 (function () {
